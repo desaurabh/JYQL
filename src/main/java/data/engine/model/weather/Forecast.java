@@ -16,7 +16,7 @@
 package data.engine.model.weather;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class Forecast implements Serializable {
 
@@ -25,8 +25,8 @@ public class Forecast implements Serializable {
 	String code;
 	Date date;
 	String day;
-	int high;
-	int low;
+	double high;
+	double low;
 	String weatherType;
 	
 	public String getCode() {
@@ -47,22 +47,22 @@ public class Forecast implements Serializable {
 	public void setDay(String day) {
 		this.day = day;
 	}
-	public int getHigh() {
+	public double getHigh() {
 		return high;
 	}
-	public void setHigh(int high) {
+	public void setHigh(double high) {
 		this.high = high;
 	}
-	public int getLow() {
+	public double getLow() {
 		return low;
 	}
-	public void setLow(int low) {
+	public void setLow(double low) {
 		this.low = low;
 	}
-	public String getText() {
+	public String getWeatherType() {
 		return weatherType;
 	}
-	public void setText(String text) {
+	public void setWeatherType(String text) {
 		this.weatherType = text;
 	}
 	

@@ -24,29 +24,19 @@ public class Weather implements Serializable {
 
     private static final long serialVersionUID = 8146333267353481838L;
 
-    String code;
     String title;
     double latitude;
     double longitude;
-    Date publishedDate;
-    Date conditionDateTime;
-    double celsiusTemprature;
-    double fahrenheitTemprature;
-    String weatherType;
+    Date pubDate;
     List<Forecast> forecast = new ArrayList<Forecast>();
+    Condition condition;
     Astronomy astronomy;
     Atmosphere atmosphere;
     Wind wind;
     Units units;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
+    Location location;
+    
+  
     public String getTitle() {
         return title;
     }
@@ -69,50 +59,6 @@ public class Weather implements Serializable {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
-    }
-
-    public Date getPublishedDate() {
-        return publishedDate;
-    }
-
-    public void setPublishedDate(Date publishedDate) {
-        this.publishedDate = publishedDate;
-    }
-
-    public Date getConditionDateTime() {
-        return conditionDateTime;
-    }
-
-    public void setConditionDateTime(Date conditionDateTime) {
-        this.conditionDateTime = conditionDateTime;
-    }
-
-    public double getCelsiusTemprature() {
-        return celsiusTemprature;
-    }
-
-    public void setCelsiusTemprature(double celsiusTemprature) {
-        double fTemp = celsiusTemprature * 9 / 5 + 32;
-        this.fahrenheitTemprature = fTemp;
-        this.celsiusTemprature = celsiusTemprature;
-    }
-
-    public double getFahrenheitTemprature() {
-        return fahrenheitTemprature;
-    }
-
-    public void setFahrenheitTemprature(double fahrenheitTemprature) {
-        double cTemp = fahrenheitTemprature - 32 * 5 / 9;
-        this.celsiusTemprature = cTemp;
-        this.fahrenheitTemprature = fahrenheitTemprature;
-    }
-
-    public String getWeatherType() {
-        return weatherType;
-    }
-
-    public void setWeatherType(String weatherType) {
-        this.weatherType = weatherType;
     }
 
     public List<Forecast> getForecast() {
@@ -155,4 +101,29 @@ public class Weather implements Serializable {
         this.units = units;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
+    }
+
+    public Condition getCondition() {
+        return condition;
+    }
+
+    public void setCondition(Condition condition) {
+        this.condition = condition;
+    }
+
+    
 }

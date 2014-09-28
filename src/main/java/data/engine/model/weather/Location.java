@@ -14,19 +14,43 @@
  * limitations under the License.
  */
 
-package data.engine.request.unmarshaller;
+package data.engine.model.weather;
 
-import java.util.Map;
-import org.codehaus.jackson.JsonNode;
+import java.io.Serializable;
 
 /**
  *
  * @author masterOpti
  */
-public interface UnmarshallerFacade {
+public class Location implements Serializable{
     
-    public void unmarshallChannel(JsonNode channelNode);
-    public Map<String,Object> buildNodeProperties(String value, JsonNode node);
-    public void unmarshallItem(JsonNode itemNode);
+    String city;
+    String country;
+    String region;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+    
     
 }

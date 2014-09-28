@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package data.engine.request.unmarshaller;
+package data.engine.response.unmarshaller;
 
 import java.io.IOException;
 import org.codehaus.jackson.JsonNode;

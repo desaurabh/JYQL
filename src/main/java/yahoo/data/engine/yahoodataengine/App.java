@@ -1,10 +1,11 @@
 package yahoo.data.engine.yahoodataengine;
 
+import data.engine.model.weather.Weather;
 import java.net.MalformedURLException;
 import java.net.URL;
 import data.engine.request.builder.BufferedResponse;
-import data.engine.request.unmarshaller.ChannelUnmarshaller;
-import data.engine.request.unmarshaller.WeatherUnmarshaller;
+import data.engine.response.unmarshaller.ChannelUnmarshaller;
+import data.engine.response.unmarshaller.WeatherUnmarshaller;
 
 
 public class App {
@@ -25,6 +26,8 @@ public class App {
         BufferedResponse br = new BufferedResponse(url);
         ChannelUnmarshaller channelUnmarshaller=new ChannelUnmarshaller(br.getJsonResponse());  
         WeatherUnmarshaller weatherUnmarshaller=channelUnmarshaller.getWeatherUnmarshaller();
+        Weather weatherModel=weatherUnmarshaller.getWeather();
+        System.out.println(weatherModel);
 
     }
 
