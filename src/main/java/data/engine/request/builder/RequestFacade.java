@@ -15,11 +15,24 @@
  */
 package data.engine.request.builder;
 
-import java.net.URL;
+import java.io.BufferedReader;
+
 
 public interface RequestFacade {
 	
-	public String baseURL="https://query.yahooapis.com";
-	public void makeRequest(URL url);
+	public static String BASE_URL="https://query.yahooapis.com/v1/";
+        
+        /*
+        * Using public allows access only public  data
+        */
+        public static String PUBLIC="public/yql?q=";
+        /*
+        * Using O_AUTH allows access to both public and private data
+        */
+        public static String O_AUTH="yql?=";
+        
+        public static String FORMAT_XML="&format=xml";
+        public static String FORMAT_JSON="&format=json";
+        public BufferedReader makeRequest(String query, String format, boolean diagnosticValue);
 
 }

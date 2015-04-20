@@ -16,6 +16,9 @@
 package data.engine.response.unmarshaller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -23,36 +26,48 @@ import org.codehaus.jackson.map.ObjectMapper;
  *
  * @author masterOpti
  */
-public class ChannelUnmarshaller implements ChannelFacade{
-    
-    
+public class ChannelUnmarshaller implements ChannelFacade {
+
     private String data;
     private WeatherUnmarshaller weatherUnmarshaller;
+    private HTMLUnmarshaller hTMLUnmarshaller;
 
-  
     public WeatherUnmarshaller getWeatherUnmarshaller() {
-        weatherUnmarshaller=new WeatherUnmarshaller();
-        try{
-        weatherUnmarshaller.unmarshallChannel(unmarshallResponse().findParent("title"));
-        }
-        catch(IOException e){
+        weatherUnmarshaller = new WeatherUnmarshaller();
+        try {
+            weatherUnmarshaller.unmarshallChannel(unmarshallResponse().findParent("title"));
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return weatherUnmarshaller;
-        
+
     }
 
-    public ChannelUnmarshaller(String response){
-        this.data=response;
+    public HTMLUnmarshaller getHTMLUnmarshaller() {
+        hTMLUnmarshaller = new HTMLUnmarshaller();
+        try {
+            List<JsonNode> jsonNodeList = new ArrayList<JsonNode>();
+            Iterator<JsonNode> itrNode = unmarshallResponse().iterator();
+            while (itrNode.hasNext()) {
+                jsonNodeList.add(itrNode.next());
+            }
+            //3 represent the result node in json response
+            hTMLUnmarshaller.unmarshallChannel(jsonNodeList.get(3));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return hTMLUnmarshaller;
     }
-    
+
+    public ChannelUnmarshaller(String response) {
+        this.data = response;
+    }
+
     @Override
     public JsonNode unmarshallResponse() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = mapper.readTree(data);
-        JsonNode parentNode=node.findParent("results");
-        return parentNode.findParent("channel");
+        return node.findParent("results");
     }
 
-  
 }

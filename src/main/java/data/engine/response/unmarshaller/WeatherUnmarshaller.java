@@ -51,6 +51,7 @@ public class WeatherUnmarshaller implements UnmarshallerFacade{
         weather.setTitle(item.findValue("title").toString());
         weather.setPubDate(dParser.parseWeatherTimeStamp(item.findValue("pubDate").asText()));
         weather.setForecast(unmarshallForecast(item.findValue("forecast")));
+        weather.setCondition(condition);
         
    }
     
@@ -63,6 +64,7 @@ public class WeatherUnmarshaller implements UnmarshallerFacade{
     @Override
     public Object unmarshallItems(JsonNode itemNode) {
         ObjectMapper mapper=new ObjectMapper();
+        
         Units units=mapper.convertValue(buildModelProperties("units", itemNode), Units.class);
         Atmosphere atmosphere=mapper.convertValue(buildModelProperties("atmosphere", itemNode), Atmosphere.class);
         Astronomy astronomy=mapper.convertValue(buildModelProperties("astronomy", itemNode), Astronomy.class);

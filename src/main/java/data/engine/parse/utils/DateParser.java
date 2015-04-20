@@ -27,8 +27,8 @@ import java.util.Locale;
  */
 public class DateParser {
  
-    private static String weatherTimeStampDateFormat="E, DD M yyyy hh:mm aaa";
-    private static String foreCastDateFormat="DD E yyyy";
+    private static String weatherTimeStampDateFormat="EEE, dd MMM yyyy hh:mm a z";
+    private static String forecastDateFormat="DD MMM yyyy";
     public DateParser(){
         
     }
@@ -38,7 +38,7 @@ public class DateParser {
     }
     
     public Date parseForecastDate(String dateValue){
-        return parseDate(foreCastDateFormat,dateValue);
+        return parseDate(forecastDateFormat,dateValue);
     }
     
     
